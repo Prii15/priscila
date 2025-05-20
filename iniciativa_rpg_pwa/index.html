@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciativa RPG - PWA</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#5c3d99" />
+</head>
+
+<body class="tema-medieval">
+  <button class="theme-switch" onclick="trocarTema()">🔄 Trocar Tema</button>
+  <h2 id="titulo">📜 Ordem de Iniciativa</h2>
+
+  <div class="form">
+    <input id="nome" placeholder="Nome do personagem">
+    <input id="valor" type="number" placeholder="Valor do dado">
+    <button onclick="adicionar()">➕ Adicionar</button>
+  </div>
+
+  <ul id="lista"></ul>
+
+  <div class="bottom-controls">
+    <button onclick="proxima()">➡️ Passar vez</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker registrado com sucesso:', reg.scope))
+          .catch(err => console.log('Falha no registro do Service Worker:', err));
+      });
+    }
+  </script>
+</body>
+</html>
